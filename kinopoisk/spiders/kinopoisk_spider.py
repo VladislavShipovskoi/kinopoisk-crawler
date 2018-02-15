@@ -45,6 +45,8 @@ class FilmsSpider(CrawlSpider):
                 review_item = KinopoiskItem()
                 review_item['sentiment'] = SENTIMENT_DICT[review.xpath('@class').extract_first()]
                 review_item['text'] = ' '.join((x.strip() for x in review.xpath('table//text()').extract() if x.strip()))
+                review_item['author'] = review.xpath('//div[@itemprop="author"]//a/text()').extract_first()
+                review_item['author_link'] = review.xpath('//div[@itemprop="author"]//a/@href').extract_first()
 
                 yield review_item
 
