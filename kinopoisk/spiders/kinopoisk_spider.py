@@ -16,7 +16,7 @@ class FilmsSpider(CrawlSpider):
     name = "kinopoisk"
     custom_settings = {
         'FEED_FORMAT': 'csv',
-        'FEED_URI': 'test.csv'
+        'FEED_URI': 'reviews.csv'
     }
     allowed_domains = ["kinopoisk.ru"]
     start_urls = [
