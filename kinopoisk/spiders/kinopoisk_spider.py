@@ -14,6 +14,10 @@ SENTIMENT_DICT = {
 
 class FilmsSpider(CrawlSpider):
     name = "kinopoisk"
+    custom_settings = {
+        'FEED_FORMAT': 'csv',
+        'FEED_URI': 'test.csv'
+    }
     allowed_domains = ["kinopoisk.ru"]
     start_urls = [
         BASE_URL.format('1')
@@ -29,13 +33,13 @@ class FilmsSpider(CrawlSpider):
             self.page += 1
             yield scrapy.Request(BASE_URL.format(self.page), callback=self.parse)
 
-    def parse_movies(self,response):
+    def parse_movies(self, response):
         reviews_url = response.xpath('//li[@class="all"]/a/@href').extract_first()
         if reviews_url:
             yield scrapy.Request(response.urljoin(reviews_url), callback=self.parse_reviews)
 
     def parse_reviews(self, response):
-        reviews = response.xpath('//div[@class="reviewItem userReview"]//div[@class="response good"]')
+        reviews = response.xpath('//div[@class="reviewItem userReview"]//div[@itemprop="reviews"]')
         if reviews:
             for review in reviews:
                 review_item = KinopoiskItem()
