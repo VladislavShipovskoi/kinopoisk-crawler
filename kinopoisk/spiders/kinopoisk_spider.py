@@ -3,7 +3,6 @@ import scrapy
 from scrapy.spiders import CrawlSpider
 from kinopoisk.items import KinopoiskItem
 
-
 BASE_URL = 'https://www.kinopoisk.ru/top/navigator/m_act%5Byears%5D/1890:201' \
            '7/m_act%5Brating%5D/1:/order/rating/page/{}/#results'
 SENTIMENT_DICT = {
@@ -62,16 +61,13 @@ class FilmsSpider(CrawlSpider):
                 review_item['sentiment'] = SENTIMENT_DICT[review.xpath(
                     '@class'
                 ).extract_first()]
-
+                review_item['movie'] = review.xpath(
+                    '//h1[@class="moviename-big"]/text()').extract_first()
                 review_item['text'] = ' '.join(
                     (
                         x.strip()
                         for x in review.xpath('table//text()'
                                               ).extract() if x.strip()))
-
-                review_item['author'] = review.xpath(
-                    '//div[@itemprop="author"]//a/text()'
-                ).extract_first()
 
                 review_item['author_link'] = review.xpath(
                     '//div[@itemprop="author"]//a/@href'
