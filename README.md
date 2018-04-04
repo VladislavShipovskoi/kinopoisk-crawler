@@ -1,6 +1,6 @@
 # kinopoisk-crawler
 
-A simple web crawler kinopoisk reviews. Spyder at this moment crawl all kinopoisk reviews to csv file (reviews.csv). In the future, the functional will be added.
+This is simple web crawler kinopoisk reviews. Spider at this moment crawl all kinopoisk reviews to csv file (reviews.csv).
 
 ## Start
 1. make virtualenv and run
@@ -8,7 +8,7 @@ A simple web crawler kinopoisk reviews. Spyder at this moment crawl all kinopois
 3. scrapy crawl kinopoisk
 
 ## Data
-Spyder collect:
+Spider collect:
 * text review
 * sentiment review
 * author name
