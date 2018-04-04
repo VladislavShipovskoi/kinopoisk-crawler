@@ -15,4 +15,4 @@ Spider collect:
 * author link
 
 ## CSV file
-![csv file](https://github.com/VladislavShipovskoi/kinopoisk-crawler/blob/master/img/Screenshot%20from%202018-02-15%2010-55-51.png)
+![csv file](https://user-images.githubusercontent.com/17500704/38317555-8139436a-3857-11e8-8e5a-29a4842b050c.png)
